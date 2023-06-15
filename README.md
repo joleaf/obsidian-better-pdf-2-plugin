@@ -1,6 +1,7 @@
-## Obsidian Better PDF Plugin
+## Obsidian Better PDF 2 Plugin
 
 Goal of this Plugin in to implement a native PDF handling workflow in Obsidian
+This version **2** was created as the original [Obsidian Better PDF Plugin](https://github.com/MSzturc/obsidian-better-pdf-plugin) was not updated anymore.
 
 ### Features
 
@@ -13,9 +14,11 @@ Goal of this Plugin in to implement a native PDF handling workflow in Obsidian
 
 ### Demo
 
-![Sample](https://github.com/MSzturc/obsidian-better-pdf-plugin/raw/master/sample/BetterPDF.gif)
+![Sample](https://github.com/joleaf/obsidian-better-pdf-2-plugin/raw/master/sample/BetterPDF.gif)
 
 ### Syntax
+
+as `json` string or `yaml`:
 
 |parameter|required|example|
 |--|--|--|
@@ -28,6 +31,28 @@ Goal of this Plugin in to implement a native PDF handling workflow in Obsidian
 |rotation|optional (default = 0)| **90** for 90deg or **-90** -90deg or **180**
 |rect|optional (default = \[0,0,0,0\])| offsetX, offsetY, sizeY, sizeX in Pixel
 
+#### Example json (from the original Better PDF plugin)
+````
+```pdf
+{
+  "url" : "[[My_pdf.pdf]]",
+  "page": 1
+}
+```
+````
+
+#### Example yaml (new syntax)
+````
+```pdf
+url: [[My_pdf.pdf]]
+page: 1
+```
+````
+
 
 ### Integration
 - [JavaScript for Adobe Acrobat Pro and AppleScript for Skim for creating automatically the necessary Better PDF Plugin snippet](https://github.com/johnsidi/scripts-for-Obsidian-Better-PDF-Plugin)
+
+## Donate
+
+<a href='https://ko-fi.com/joleaf' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />

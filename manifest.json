@@ -1,10 +1,10 @@
 {
-	"id": "better-pdf-plugin",
-	"name": "Better PDF Plugin",
-	"version": "1.4.0",
-	"minAppVersion": "0.11.13",
+	"id": "better-pdf-2",
+	"name": "Better PDF 2",
+	"version": "2.0.0",
+	"minAppVersion": "0.15.0",
 	"description": "Goal of this Plugin in to implement a native PDF handling workflow",
-	"author": "MSzturc",
-	"authorUrl": "https://github.com/MSzturc",
+	"author": "JoLeaf",
+	"authorUrl": "https://github.com/joleaf",
 	"isDesktopOnly": false
 }
