@@ -1,7 +1,7 @@
 import {parseYaml, Plugin, TFile} from "obsidian";
 import {BetterPdfSettings, BetterPdfSettingsTab} from "./settings";
 import * as pdfjs from "pdfjs-dist";
-import * as worker from "pdfjs-dist/build/pdf.worker.entry.js";
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 
 interface PdfNodeParameters {
     range: Array<number>;
@@ -23,7 +23,7 @@ export default class BetterPDFPlugin extends Plugin {
         this.settings = Object.assign(new BetterPdfSettings(), await this.loadData());
         this.addSettingTab(new BetterPdfSettingsTab(this.app, this));
 
-        pdfjs.GlobalWorkerOptions.workerSrc = worker;
+        pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
         this.registerMarkdownCodeBlockProcessor("pdf", async (src, el, ctx) => {
             // Get Parameters
@@ -165,6 +165,7 @@ export default class BetterPDFPlugin extends Plugin {
 
         //Convert Range (if present) and Page to Array<Page>
         if (parameters.range !== undefined) {
+            // @ts-ignore
             parameters.page = Array.from({length: parameters.range[1] - parameters.range[0] + 1}, (_, i) => parameters.range[0] + i);
         }
 
