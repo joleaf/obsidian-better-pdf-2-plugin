@@ -1,7 +1,5 @@
-import {parseYaml, Plugin, TFile} from "obsidian";
+import {parseYaml, Plugin, loadPdfJs} from "obsidian";
 import {BetterPdfSettings, BetterPdfSettingsTab} from "./settings";
-import * as pdfjs from "pdfjs-dist";
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 
 interface PdfNodeParameters {
     range: Array<number>;
@@ -23,8 +21,6 @@ export default class BetterPDFPlugin extends Plugin {
         this.settings = Object.assign(new BetterPdfSettings(), await this.loadData());
         this.addSettingTab(new BetterPdfSettingsTab(this.app, this));
 
-        pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-
         this.registerMarkdownCodeBlockProcessor("pdf", async (src, el, ctx) => {
             // Get Parameters
             let parameters: PdfNodeParameters | null = null;
@@ -45,6 +41,7 @@ export default class BetterPDFPlugin extends Plugin {
                         parameters.url = folderPath + "/" + parameters.url.substring(2, parameters.url.length);
                     }
                     //Read Document
+                    const pdfjs = await loadPdfJs();
                     const arrayBuffer = await this.app.vault.adapter.readBinary(parameters.url);
                     const buffer = new Uint8Array(arrayBuffer);
                     const document = await pdfjs.getDocument(buffer).promise;

@@ -1,6 +1,6 @@
 {
   "name": "better-pdf-2",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Goal of this Plugin in to implement a native PDF handling workflow",
   "main": "main.js",
   "scripts": {
@@ -22,7 +22,6 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
-    "pdfjs-dist": "^2.16.105"
+    "canvas": "^2.11.2"
   }
 }
